@@ -6,7 +6,7 @@ export async function ArticlesApiCall(
   pageN: string | null
 ): Promise<Article[]> {
   const response = await fetch(
-    `http://localhost:3000/api/articles?page=${pageN ? pageN : 1}`,
+    `${DOMAIN}/api/articles?page=${pageN ? pageN : 1}`,
     { cache: "no-store" }
   );
   if (!response.ok) {
