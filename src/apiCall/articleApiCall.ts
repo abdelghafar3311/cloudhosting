@@ -18,7 +18,7 @@ export async function ArticlesApiCall(
 
 // get articles number
 export async function ArticlesCountApiCall(): Promise<number> {
-  const response = await fetch(`http://localhost:3000/api/articles/count`, {
+  const response = await fetch(`${DOMAIN}/api/articles/count`, {
     cache: "no-store",
   });
   if (!response.ok) {
@@ -33,9 +33,7 @@ export async function ArticlesCountApiCall(): Promise<number> {
 export async function ArticlesSearchApiCall(
   searchText: string
 ): Promise<Article[]> {
-  const response = await fetch(
-    `http://localhost:3000/api/articles/search?q=${searchText}`
-  );
+  const response = await fetch(`${DOMAIN}/api/articles/search?q=${searchText}`);
   if (!response.ok) {
     throw new Error("Error in Fetch Method");
   }
