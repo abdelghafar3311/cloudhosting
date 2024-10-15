@@ -1,6 +1,7 @@
 import { Article } from "@prisma/client";
 import { DOMAIN } from "@/Utils/server_connection";
 import { SingleArticle } from "@/Utils/types";
+import { notFound } from "next/navigation";
 // get articles
 export async function ArticlesApiCall(
   pageN: string | null
@@ -10,7 +11,7 @@ export async function ArticlesApiCall(
     { cache: "no-store" }
   );
   if (!response.ok) {
-    throw new Error("Error in Fetch Method");
+    notFound();
   }
 
   return response.json();
@@ -35,7 +36,7 @@ export async function ArticlesSearchApiCall(
 ): Promise<Article[]> {
   const response = await fetch(`${DOMAIN}/api/articles/search?q=${searchText}`);
   if (!response.ok) {
-    throw new Error("Error in Fetch Method");
+    notFound();
   }
 
   return response.json();
@@ -47,7 +48,7 @@ export async function getSingleArticle(id: string): Promise<SingleArticle> {
     cache: "no-store",
   });
   if (!response.ok) {
-    throw new Error("Some Thing Wrong In Fetching");
+    notFound();
   }
 
   return await response.json();
