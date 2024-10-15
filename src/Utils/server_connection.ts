@@ -1,4 +1,4 @@
-export const DOMAIN = "http://localhost:3000";
+export const DOMAIN = "https://cloudhosting-3p4u.vercel.app";
 
 // USERS AUTHENTICATE
 
