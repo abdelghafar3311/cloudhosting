@@ -1,20 +1,22 @@
 import { ARTICLE_PER_PAGE } from "@/Utils/constants"
 import Link from "next/link";
 import { Article } from "@prisma/client";
-import { ArticlesApiCall } from "@/apiCall/articleApiCall";
+import { ArticlesApiCall, ArticlesCountApiCall } from "@/apiCall/articleApiCall";
 import Pagination from "@/components/Articles/Pagination";
 import DeleteButton from "./DeleteButton";
-import { prisma } from '@/Utils/db';
+
 
 interface AdminArticlesTablesProps {
     searchParams: { page: string }
 }
 
+export const dynamic = "force-dynamic"
+
 
 async function AdminArticlesTables({ searchParams }: AdminArticlesTablesProps) {
     const page = searchParams.page;
     const articles: Article[] = await ArticlesApiCall(page);
-    const count = await prisma.article.count();
+    const count = await ArticlesCountApiCall();
     const pages = Math.ceil(count / ARTICLE_PER_PAGE);
     return (
         <section className='h p-5'>

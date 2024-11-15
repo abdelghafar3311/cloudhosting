@@ -3,18 +3,19 @@ import React from 'react'
 import { Article } from '@prisma/client';
 import SearchArticles from '@/components/Articles/SearchArticles';
 import Pagination from '@/components/Articles/Pagination';
-import { ArticlesApiCall } from '@/apiCall/articleApiCall';
+import { ArticlesApiCall, ArticlesCountApiCall } from '@/apiCall/articleApiCall';
 import { ARTICLE_PER_PAGE } from '@/Utils/constants';
-import { prisma } from '@/Utils/db';
 
 interface ArticlesProps {
   searchParams: { page: string }
 }
 
+export const dynamic = "force-dynamic"
+
 async function Articles({ searchParams }: ArticlesProps) {
   const page = searchParams.page;
   const ArticlesFetch: Article[] = await ArticlesApiCall(page);
-  const count = await prisma.article.count();
+  const count = await ArticlesCountApiCall();
   const pages = Math.ceil(count / ARTICLE_PER_PAGE);
 
 

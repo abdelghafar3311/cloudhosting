@@ -1,5 +1,4 @@
 import { getAllComments } from "@/apiCall/adminApiCall";
-import { DOMAIN, COMMENTS_DOMAIN } from "@/Utils/server_connection";
 import { Comments } from "@prisma/client"
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";

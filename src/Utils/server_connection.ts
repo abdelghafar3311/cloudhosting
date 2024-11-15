@@ -1,10 +1,7 @@
 const PRODUCTION_DOMAIN = "https://cloudhosting-3p4u.vercel.app";
 const DEVELOPMENT_DOMAIN = "http://localhost:3000";
 
-export const DOMAIN =
-  process.env.NODE_ENV === "development"
-    ? DEVELOPMENT_DOMAIN
-    : PRODUCTION_DOMAIN;
+export const DOMAIN = DEVELOPMENT_DOMAIN;
 
 // USERS AUTHENTICATE
 
