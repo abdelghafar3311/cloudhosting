@@ -1,7 +1,7 @@
 const PRODUCTION_DOMAIN = "https://cloudhosting-3p4u.vercel.app";
-const DEVELOPMENT_DOMAIN = "http://localhost:3000";
+// const DEVELOPMENT_DOMAIN = "http://localhost:3000";
 
-export const DOMAIN = DEVELOPMENT_DOMAIN;
+export const DOMAIN = PRODUCTION_DOMAIN;
 
 // USERS AUTHENTICATE
 
